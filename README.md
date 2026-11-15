@@ -6,7 +6,8 @@ Plain HTML/CSS/JS, no build step. Successor to RentalInsights-Frontend.
 | Path | What |
 |---|---|
 | `/` | Landing |
-| `/login/` | Sign in / create account (email + password, Google). New accounts confirm their email with an 8-character code. `?mode=signup` opens create-account. |
+| `/verify-email/` | Landing page for the confirmation link (`?key=`). |
+| `/login/` | Sign in / create account (email + password, Google). New accounts confirm their email by clicking a link we send. `?mode=signup` opens create-account. |
 | `/forgot-password/`, `/reset-password/?key=` | Emailed reset link flow |
 | `/account/` | Signed-in placeholder (redirects to login when signed out) |
 | `/reports/memphis/`, `/reports/cleveland/` | Pre-order landing pages for the pay-or-not experiment |

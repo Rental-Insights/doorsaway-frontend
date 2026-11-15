@@ -1,4 +1,4 @@
-/* Login page: sign in, create account, confirm email with a code, Google. */
+/* Login page: sign in, create account, confirm email by link, Google. */
 (function () {
   var A = window.DoorsAwayAPI;
   function $(id) { return document.getElementById(id); }
@@ -7,7 +7,6 @@
   var q = new URLSearchParams(location.search);
   var mode = q.get('mode') === 'signup' ? 'signup' : 'signin';
   var email = '';        // address awaiting confirmation
-  var cooldownTimer = null;
 
   // Only same-site relative paths: never send someone to a URL taken from the query string.
   var next = (function () {
@@ -24,7 +23,7 @@
     if (label) btn.textContent = label;
   }
   function clearErrors() {
-    ['email-err', 'password-err', 'form-err', 'code-err'].forEach(function (id) { show($(id), false); $(id).textContent = ''; });
+    ['email-err', 'password-err', 'form-err'].forEach(function (id) { show($(id), false); $(id).textContent = ''; });
     $('email').removeAttribute('aria-invalid'); $('password').removeAttribute('aria-invalid');
   }
   function fieldError(id, input, text) {
@@ -92,7 +91,7 @@
     req.then(function (r) {
       setBusy(btn, false, label);
       if (r.status === 200 && r.meta.is_authenticated) return done();
-      if (r.status === 401 && A.pendingFlow(r) === 'verify_email') { email = em; return openVerify(true); }
+      if (r.status === 401 && A.pendingFlow(r) === 'verify_email') { email = em; return openVerify(); }
       applyErrors(r);
       var first = document.querySelector('[aria-invalid="true"]'); if (first) first.focus();
     }).catch(function () { setBusy(btn, false, label); fieldError('form-err', null, NETWORK); });
@@ -104,75 +103,24 @@
     A.googleSignIn(next).catch(function () { setBusy(b, false); fieldError('form-err', null, NETWORK); });
   });
 
-  // ---------- step 2: confirm email ----------
-  function openVerify(justSent) {
+  // ---------- step 2: we emailed a confirmation link ----------
+  function openVerify() {
     $('verify-email').textContent = email;
     show($('view-form'), false); show($('view-verify'), true);
-    $('code').value = ''; clearErrors();
-    notice($('verify-notice'), 'info', '');
-    startCooldown(30);
-    $('code').focus();
     document.title = 'Check your email — DoorsAway';
+    $('verify-title').setAttribute('tabindex', '-1'); $('verify-title').focus();
   }
-  function backToForm(message) {
+  function backToForm() {
     show($('view-verify'), false); show($('view-form'), true);
-    stopCooldown(); renderMode();
-    notice($('page-notice'), message ? 'info' : 'info', message || '');
-    $('email').focus();
+    renderMode();
+    $('email').value = email; $('password').focus();
   }
-  $('back-btn').addEventListener('click', function () { backToForm(''); });
-
-  function startCooldown(sec) {
-    stopCooldown();
-    var btn = $('resend-btn'), wait = $('resend-wait'), left = sec;
-    btn.disabled = true;
-    function tick() {
-      if (left <= 0) { stopCooldown(); return; }
-      wait.textContent = ' (available in ' + left + 's)'; left--;
-    }
-    tick(); cooldownTimer = setInterval(tick, 1000);
-  }
-  function stopCooldown() {
-    clearInterval(cooldownTimer); cooldownTimer = null;
-    $('resend-btn').disabled = false; $('resend-wait').textContent = '';
-  }
-
-  $('code').addEventListener('input', function () {
-    // Format as XXXX-XXXX while typing or pasting.
-    var raw = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8);
-    this.value = raw.length > 4 ? raw.slice(0, 4) + '-' + raw.slice(4) : raw;
-  });
-
-  $('verify-form').addEventListener('submit', function (e) {
-    e.preventDefault(); clearErrors();
-    var code = $('code').value.trim();
-    if (code.replace('-', '').length < 8) { fieldError('code-err', $('code'), 'Enter the 8-character code from the email.'); $('code').focus(); return; }
-    var btn = $('verify-btn'); setBusy(btn, true, 'Confirming…');
-    A.verifyEmail(code).then(function (r) {
-      setBusy(btn, false, 'Confirm email');
-      if (r.status === 200 && r.meta.is_authenticated) return done();
-      if (r.status === 409 || r.status === 401) {   // the pending confirmation is gone (expired / too many wrong codes)
-        return backToForm('That code has expired. Sign in again and we’ll send a new one.');
-      }
-      if (r.status === 429) { fieldError('code-err', $('code'), THROTTLED); return; }
-      var msg = (r.errors[0] && r.errors[0].message) || 'That code isn’t right.';
-      fieldError('code-err', $('code'), msg + ' Check it and try again.'); $('code').focus();
-    }).catch(function () { setBusy(btn, false, 'Confirm email'); fieldError('code-err', null, NETWORK); });
-  });
-
-  $('resend-btn').addEventListener('click', function () {
-    clearErrors();
-    A.resendCode().then(function (r) {
-      if (r.status === 200) { notice($('verify-notice'), 'ok', 'We sent a new code to ' + email + '.'); startCooldown(30); return; }
-      if (r.status === 429) { notice($('verify-notice'), 'info', 'Please wait a few seconds before asking for another code.'); startCooldown(10); return; }
-      if (r.status === 409) { backToForm('We can’t send more codes for this signup. Sign in again to get a fresh one.'); return; }
-      notice($('verify-notice'), 'err', 'We couldn’t resend the code. Please try again.');
-    }).catch(function () { notice($('verify-notice'), 'err', NETWORK); });
-  });
+  $('back-btn').addEventListener('click', function () { mode = 'signin'; backToForm(); });
 
   // ---------- on load ----------
   renderMode();
   if (q.get('error') === 'social') notice($('page-notice'), 'err', 'Google sign-in didn’t complete. Please try again, or use your email and password.');
+  if (q.get('confirmed') === '1') notice($('page-notice'), 'ok', 'Email confirmed. Sign in to continue.');
   if (q.get('reset') === '1') notice($('page-notice'), 'ok', 'Password updated. Sign in with your new password.');
 
   // Already signed in? Skip the form.

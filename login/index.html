@@ -69,24 +69,15 @@
       </form>
     </section>
 
-    <!-- Step 2: confirm the email address with the code we sent -->
+    <!-- Step 2: we emailed a confirmation link -->
     <section class="auth-card" id="view-verify" aria-labelledby="verify-title" hidden>
       <div>
         <h2 id="verify-title">Check your email</h2>
-        <p class="sub">We sent an 8-character code to <strong id="verify-email"></strong>. Enter it to confirm your address.</p>
+        <p class="sub">We sent a confirmation link to <strong id="verify-email"></strong>. Open it to finish creating your account, then come back and sign in.</p>
       </div>
-      <div id="verify-notice" class="notice info" role="status" hidden></div>
-      <form id="verify-form" class="stack" novalidate>
-        <div class="field">
-          <label for="code">Confirmation code</label>
-          <input id="code" name="code" type="text" class="code-input" autocomplete="one-time-code" autocapitalize="characters" spellcheck="false" maxlength="9" placeholder="XXXX-XXXX" required>
-          <p class="field-msg" id="code-err" role="alert" hidden></p>
-        </div>
-        <button class="btn btn-accent btn-block" type="submit" id="verify-btn">Confirm email</button>
-      </form>
       <div class="stack" style="gap:4px">
-        <p class="fine" style="margin:0">Didn’t get it? Check spam, then <button type="button" class="link-btn" id="resend-btn">resend the code</button><span id="resend-wait" class="fine" aria-live="polite"></span></p>
-        <p class="fine" style="margin:0">Wrong address? <button type="button" class="link-btn" id="back-btn">Start over</button></p>
+        <p class="fine" style="margin:0">Didn’t get it? Check spam, then <button type="button" class="link-btn" id="back-btn">go back and sign in again</button> and we’ll send a new link.</p>
+        <p class="fine" style="margin:0">The link works for 3 days.</p>
       </div>
     </section>
   </main>

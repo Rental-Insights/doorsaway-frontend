@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Confirm your email — DoorsAway</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14213D">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/logo/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<div class="wrap" style="max-width:520px;padding-top:28px;padding-bottom:64px">
+  <header class="site-header"><a class="logo" href="../"><img src="../assets/logo/mark.svg" alt="" width="34" height="34">doors<b>away</b></a></header>
+  <main id="main" style="padding-top:40px">
+    <section class="auth-card" id="view-checking" style="max-width:none" aria-live="polite"><p class="sub">Confirming your email…</p></section>
+
+    <section class="auth-card" id="view-done" aria-labelledby="t1" style="max-width:none" hidden>
+      <div>
+        <h1 id="t1" style="font-size:30px">Email confirmed</h1>
+        <p class="sub"><strong id="done-email"></strong> is confirmed. Sign in to continue.</p>
+      </div>
+      <a class="btn btn-accent btn-block" id="signin-link" href="../login/?confirmed=1">Sign in</a>
+    </section>
+
+    <section class="auth-card" id="view-bad" aria-labelledby="t2" style="max-width:none" hidden>
+      <div>
+        <h1 id="t2" style="font-size:30px">This link didn’t work</h1>
+        <p class="sub">Confirmation links work once and expire after 3 days. If you already confirmed, just sign in. If not, sign in with your email and password and we’ll send a new link.</p>
+      </div>
+      <a class="btn btn-accent btn-block" href="../login/">Go to sign in</a>
+    </section>
+
+    <section class="auth-card" id="view-net" aria-labelledby="t3" style="max-width:none" hidden>
+      <div>
+        <h1 id="t3" style="font-size:30px">We can’t reach DoorsAway</h1>
+        <p class="sub">Check your connection, then reload this page to try again.</p>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/api.js"></script>
+<script src="../assets/js/verify.js"></script>
+</body>
+</html>

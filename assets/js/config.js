@@ -10,7 +10,7 @@ window.DOORSAWAY = (function () {
     // session cookie is same-site, e.g. site doorsaway.example, API api.doorsaway.example.
     apiBase: isLocal ? 'http://localhost:8000' : 'https://app.doorsaway.com',
 
-    contactEmail: '', // shown in footers and error messages when set, e.g. 'hello@doorsaway.example'
+    contactEmail: 'hello@doorsaway.com', // shown in footers, legal pages and error messages
 
     // ---- Paid-report experiment (Memphis / Cleveland) ----
     metaPixelId: '',   // e.g. '123456789012345'

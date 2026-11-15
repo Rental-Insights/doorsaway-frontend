@@ -1,8 +1,11 @@
 /* DoorsAway frontend configuration. The only file you edit to point the site at an environment.
    No secrets belong here: everything in this file is public. */
 window.DOORSAWAY = (function () {
+  // Served from a GitHub project page (/doorsaway-frontend/) or from a domain root.
+  var base = /^\/doorsaway-frontend(\/|$)/.test(location.pathname) ? '/doorsaway-frontend' : '';
   var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   return {
+    base: base,
     // Backend API (Django). Must share a registrable domain with this site in production so the
     // session cookie is same-site, e.g. site doorsaway.example, API api.doorsaway.example.
     apiBase: isLocal ? 'http://localhost:8000' : 'https://api.doorsaway.example', // TODO: set the real API URL

@@ -8,7 +8,7 @@ window.DOORSAWAY = (function () {
     base: base,
     // Backend API (Django). Must share a registrable domain with this site in production so the
     // session cookie is same-site, e.g. site doorsaway.example, API api.doorsaway.example.
-    apiBase: isLocal ? 'http://localhost:8000' : 'https://api.doorsaway.example', // TODO: set the real API URL
+    apiBase: isLocal ? 'http://localhost:8000' : 'https://app.doorsaway.com',
 
     contactEmail: '', // shown in footers and error messages when set, e.g. 'hello@doorsaway.example'
 

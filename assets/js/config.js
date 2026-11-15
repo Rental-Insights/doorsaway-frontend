@@ -24,8 +24,8 @@ window.DOORSAWAY = (function () {
     // Left empty on purpose: RentalInsights' links redirect to rentalinsights.ai after payment.
     // While a link is empty, the pre-order button shows "checkout isn't connected yet".
     paymentLinks: {
-      memphis:   { 49: '', 149: '' },
-      cleveland: { 49: '', 149: '' }
+      memphis:   { 49: 'https://buy.stripe.com/14A9AMbVxbNg1hb9DSew804', 149: 'https://buy.stripe.com/5kQaEQbVx18CaRL4jyew805' },
+      cleveland: { 49: 'https://buy.stripe.com/dRm3cof7Jg3w6Bv3fuew806', 149: 'https://buy.stripe.com/8x25kw4t5cRk8JD3fuew807' }
     },
 
     // Per-market copy and stats. Leave a stat null to hide it.

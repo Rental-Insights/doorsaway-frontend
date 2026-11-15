@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Reset your password — DoorsAway</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14213D">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+<div class="wrap" style="max-width:520px;padding-top:28px;padding-bottom:64px">
+  <header class="site-header"><a class="logo" href="/"><img src="/assets/logo/mark.svg" alt="" width="34" height="34">doors<b>away</b></a></header>
+  <main id="main" style="padding-top:40px">
+    <section class="auth-card" id="view-request" aria-labelledby="t" style="max-width:none">
+      <div>
+        <h1 id="t" style="font-size:30px">Reset your password</h1>
+        <p class="sub">Enter the email you signed up with. We’ll send you a link to choose a new password.</p>
+      </div>
+      <form id="request-form" class="stack" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+          <p class="field-msg" id="email-err" role="alert" hidden></p>
+        </div>
+        <p class="field-msg" id="form-err" role="alert" hidden></p>
+        <button class="btn btn-accent btn-block" type="submit" id="request-btn">Send reset link</button>
+      </form>
+      <p class="fine" style="margin:0"><a href="/login/">Back to sign in</a></p>
+    </section>
+
+    <section class="auth-card" id="view-sent" aria-labelledby="t2" style="max-width:none" hidden>
+      <div>
+        <h1 id="t2" style="font-size:30px">Check your email</h1>
+        <p class="sub">If an account exists for <strong id="sent-email"></strong>, a reset link is on its way. It can take a minute, and it’s worth checking spam.</p>
+      </div>
+      <div class="stack" style="gap:4px">
+        <p class="fine" style="margin:0">Nothing after a few minutes? <button type="button" class="link-btn" id="again-btn">Try again</button></p>
+        <p class="fine" style="margin:0"><a href="/login/">Back to sign in</a></p>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/api.js"></script>
+<script src="/assets/js/recover.js"></script>
+</body>
+</html>

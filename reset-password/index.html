@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Choose a new password — DoorsAway</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14213D">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+<div class="wrap" style="max-width:520px;padding-top:28px;padding-bottom:64px">
+  <header class="site-header"><a class="logo" href="/"><img src="/assets/logo/mark.svg" alt="" width="34" height="34">doors<b>away</b></a></header>
+  <main id="main" style="padding-top:40px">
+    <section class="auth-card" id="view-checking" style="max-width:none" aria-live="polite"><p class="sub">Checking your link…</p></section>
+
+    <section class="auth-card" id="view-reset" aria-labelledby="t" style="max-width:none" hidden>
+      <div>
+        <h1 id="t" style="font-size:30px">Choose a new password</h1>
+        <p class="sub">Pick something you don’t use anywhere else.</p>
+      </div>
+      <form id="reset-form" class="stack" novalidate>
+        <div class="field">
+          <label for="password">New password</label>
+          <div class="pw-wrap">
+            <input id="password" type="password" autocomplete="new-password" required aria-describedby="pw-hint">
+            <button type="button" class="pw-toggle" id="pw-toggle" aria-controls="password" aria-pressed="false">Show</button>
+          </div>
+          <p class="hint" id="pw-hint">At least 8 characters. Avoid common passwords.</p>
+          <p class="field-msg" id="password-err" role="alert" hidden></p>
+        </div>
+        <p class="field-msg" id="form-err" role="alert" hidden></p>
+        <button class="btn btn-accent btn-block" type="submit" id="reset-btn">Update password</button>
+      </form>
+    </section>
+
+    <section class="auth-card" id="view-expired" aria-labelledby="t3" style="max-width:none" hidden>
+      <div>
+        <h1 id="t3" style="font-size:30px">This link has expired</h1>
+        <p class="sub">Reset links work once and stop working after a while. Request a new one and we’ll email it right away.</p>
+      </div>
+      <a class="btn btn-accent btn-block" href="/forgot-password/">Request a new link</a>
+    </section>
+  </main>
+</div>
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/api.js"></script>
+<script src="/assets/js/recover.js"></script>
+</body>
+</html>

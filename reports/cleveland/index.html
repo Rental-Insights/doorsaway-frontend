@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cleveland rental market report for out-of-state investors — DoorsAway</title>
+<meta name="description" content="A buyer's report for out-of-state rental investors: the neighborhoods that cash-flow, vetted property managers and agents, landlord rules and live deals.">
+<meta name="theme-color" content="#F7F5F0">
+<link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body data-market="cleveland" class="has-sticky">
+<a class="skip" href="#sales">Skip to content</a>
+<div class="wrap">
+  <header class="site-header">
+    <a class="logo" href="/"><img src="/assets/logo/mark.svg" alt="" width="34" height="34">doors<b>away</b></a>
+    <button class="btn btn-primary btn-small" data-buy>Pre-order the report</button>
+  </header>
+</div>
+
+<!-- ===================== SALES PAGE ===================== -->
+<main id="sales">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <span class="eyebrow">For rental investors in California and New York</span>
+        <h1 id="headline"></h1>
+        <p class="lede" id="sub"></p>
+        <div class="cta-row" style="margin-top:28px">
+          <button class="btn btn-accent" data-buy><span>Pre-order the <span data-city></span> report — $<span data-price></span></span></button>
+          <a class="btn btn-ghost" href="#waitlist" data-track="waitlist_click">Not ready? Join the waitlist</a>
+        </div>
+        <p class="fine" style="margin:14px 0 0">Pre-order · delivered by <b data-delivery></b> · full refund if it doesn’t help you, no questions asked.</p>
+      </div>
+      <div class="card preview" aria-label="Report preview">
+        <div class="row-between">
+          <h3 style="margin:0">Top neighborhoods · <span data-city></span></h3>
+          <span class="tag">Preview</span>
+        </div>
+        <table>
+          <thead><tr><th>Neighborhood</th><th>Typical price</th><th>Cash flow / mo</th><th>Tenants</th></tr></thead>
+          <tbody>
+            <tr><td class="blur">Hollow Pines</td><td class="blur">$148,000</td><td class="blur">+$212</td><td><span class="tag">Stay long</span></td></tr>
+            <tr><td class="blur">Cedar Bluffs</td><td class="blur">$131,000</td><td class="blur">+$188</td><td><span class="tag">Stay long</span></td></tr>
+            <tr><td class="blur">River Oaks W</td><td class="blur">$162,000</td><td class="blur">+$141</td><td><span class="tag alt">Turnover</span></td></tr>
+            <tr><td class="blur">Maple Ridge</td><td class="blur">$119,000</td><td class="blur">+$96</td><td><span class="tag">Stay long</span></td></tr>
+          </tbody>
+        </table>
+        <p class="fine" style="margin:12px 0 0">Blurred placeholders. The report has the real neighborhood names, numbers and sources.</p>
+      </div>
+    </div>
+
+    <div class="stats" id="stats"></div>
+
+    <section class="block">
+      <h2>Buying a rental from 2,000 miles away usually goes wrong in one of three ways.</h2>
+      <div class="grid3">
+        <div class="card"><span class="num">01</span><h3>The wrong block</h3><p>Two streets apart can mean tenants who stay five years or tenants who leave every year. Listing sites don’t show you which.</p></div>
+        <div class="card"><span class="num">02</span><h3>Numbers that don’t hold</h3><p>Asking rents, skipped repairs and a guessed tax bill make a losing deal look like a winner — until month three.</p></div>
+        <div class="card"><span class="num">03</span><h3>A manager who disappears</h3><p>Most reviews come from tenants. Owners need to know about fees, response time and how vacancies get filled.</p></div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <h2>What’s in the <span data-city></span> report</h2>
+      <ul class="checks">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8431C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b>The neighborhoods that cash-flow</b> at today’s rates, ranked — and why, with sources.</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8431C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b>Where tenants stay</b> — every rental address sorted by how fast it re-lets and how long tenants stay.</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8431C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b>3 vetted property managers</b> with real fees side by side and owner (not tenant) reviews.</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8431C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b>3 investor agents</b> who have closed rental deals and do video walkthroughs.</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8431C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b>Real holding costs</b> — property tax, insurance and flood risk by area.</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8431C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b>Landlord rules</b> — evictions, registration and inspections, in plain English.</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8431C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b>10 live listings</b> that clear $100+/month after every cost, with the full math.</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B8431C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b>A stress test</b> — which deals still work if rent drops, a roof comes due or rates rise.</span></li>
+      </ul>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <h2>Why <span data-city></span>?</h2>
+      <div class="grid3" id="why"></div>
+    </section>
+
+    <section class="block" id="buy" style="padding-top:0">
+      <div class="dark-card price-card">
+        <div>
+          <h2 style="font-size:clamp(26px,3.4vw,36px);margin-bottom:12px">The <span data-city></span> rental report</h2>
+          <p style="margin:0 0 12px">PDF + spreadsheet. Delivered by <b data-delivery style="color:#fff"></b>.</p>
+          <p style="margin:0" id="founding"></p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;align-items:stretch;min-width:240px">
+          <div class="price">$<span data-price></span> <small>one time</small></div>
+          <button class="btn btn-accent" data-buy>Pre-order now</button>
+          <span style="font-size:13px;color:var(--on-dark-muted)">Secure checkout by Stripe · full refund if it doesn’t help</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="card founder">
+        <div class="avatar" aria-hidden="true">J</div>
+        <div>
+          <h3 style="font-size:20px;margin:0 0 6px">Who’s behind this</h3>
+          <p>I’m Jahon, a software engineer in the Bay Area. I own a rental 2,700 miles away in Rochester, NY, run by a property manager I’ve never met in person. DoorsAway is the research I wish I’d had before buying: real rent data, how long tenants actually stay, and which managers answer the phone.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <h2>Questions</h2>
+      <details><summary>When do I get the report?</summary><p>This is a pre-order. Your report is delivered by email by <b data-delivery></b>. If we miss that date, you get a full refund automatically.</p></details>
+      <details><summary>What if it doesn’t help?</summary><p>Reply to the delivery email within 30 days and we’ll refund you in full. No questions.</p></details>
+      <details><summary>Do managers or agents pay to be listed?</summary><p>No. Nobody can pay to appear or to raise their ranking. If we ever earn a referral fee from a partner, we’ll say so next to their name.</p></details>
+      <details><summary>Is this financial advice?</summary><p>No. It’s research and data to help you decide. Always confirm with your own inspector, attorney and lender before you buy.</p></details>
+      <details><summary>What other cities are coming?</summary><p>The markets our waitlist asks for most. Tell us yours below.</p></details>
+    </section>
+
+    <section class="block" id="waitlist" style="padding-top:0">
+      <div class="card">
+        <h2 style="font-size:clamp(24px,3vw,32px);margin-bottom:8px">Not ready to buy yet?</h2>
+        <p style="margin:0">Join the waitlist. We’ll send one email when a new market report is out — nothing else.</p>
+        <form class="inline" id="waitlist-form" novalidate>
+          <label class="sr-only" for="wl-email">Email</label>
+          <input id="wl-email" type="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+          <label class="sr-only" for="wl-market">Market you’re interested in</label>
+          <select id="wl-market" name="interest">
+            <option value="memphis">Memphis, TN</option>
+            <option value="cleveland">Cleveland, OH</option>
+            <option value="other">Somewhere else</option>
+          </select>
+          <button class="btn btn-primary" type="submit">Join the waitlist</button>
+        </form>
+        <p class="msg" id="wl-msg" role="status" aria-live="polite" style="margin-top:10px"></p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- ===================== THANK-YOU (after Stripe) ===================== -->
+<main id="thanks" hidden>
+  <div class="wrap" style="max-width:720px;padding-top:40px;padding-bottom:80px">
+    <span class="eyebrow">Pre-order confirmed</span>
+    <h1 style="font-size:clamp(32px,5vw,48px);margin:18px 0 12px">Thank you — your <span data-city></span> report is on its way.</h1>
+    <p class="lede" style="margin:0 0 28px">It arrives by email by <b data-delivery></b>. Three quick questions so we can tailor it to you:</p>
+    <form class="card stack" id="survey-form">
+      <div class="field"><label for="s-budget">How much cash could you put into a rental?</label>
+        <select id="s-budget" name="budget"><option value="">Choose one</option><option>Under $35k</option><option>$35k–$70k</option><option>$70k–$150k</option><option>More than $150k</option></select></div>
+      <div class="field"><label for="s-when">When are you hoping to buy?</label>
+        <select id="s-when" name="timeline"><option value="">Choose one</option><option>In the next 3 months</option><option>3–12 months</option><option>Just researching</option></select></div>
+      <div class="field"><label for="s-own">How many rentals do you own today?</label>
+        <select id="s-own" name="owned"><option value="">Choose one</option><option>None yet</option><option>1–2</option><option>3–10</option><option>More than 10</option></select></div>
+      <div class="field"><label for="s-note">Anything specific you want the report to answer? (optional)</label>
+        <textarea id="s-note" name="note" rows="3"></textarea></div>
+      <label style="display:flex;gap:10px;align-items:flex-start;font-size:15px"><input type="checkbox" name="call_ok" style="width:18px;height:18px;margin-top:3px;accent-color:var(--accent)"> I’m open to a 15-minute call about what I’m looking for.</label>
+      <button class="btn btn-accent" type="submit">Send</button>
+      <p class="msg" id="s-msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</main>
+
+<footer class="site-footer" style="padding-bottom:120px">
+  <div class="wrap">
+    <span>© DoorsAway · We never sell your email. Research only, not financial advice.</span>
+    <nav aria-label="Footer"><a href="/">Home</a><a href="#" id="contact-link" hidden>Contact</a></nav>
+  </div>
+</footer>
+
+<div class="sticky-buy" id="sticky">
+  <span class="p">$<span data-price></span></span>
+  <button class="btn btn-accent" data-buy><span>Pre-order the <span data-city></span> report</span></button>
+</div>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/reports.js"></script>
+</body>
+</html>

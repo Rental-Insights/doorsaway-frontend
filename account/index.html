@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Your account — DoorsAway</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14213D">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site-header">
+    <a class="logo" href="/"><img src="/assets/logo/mark.svg" alt="" width="34" height="34">doors<b>away</b></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#reports">Reports</a>
+      <button type="button" class="btn btn-ghost btn-small" id="logout-btn" hidden>Sign out</button>
+    </nav>
+  </header>
+  <main id="main" style="padding:48px 0 96px">
+    <div class="account-card card stack" id="view-loading" aria-live="polite"><p class="sub" style="margin:0">Loading your account…</p></div>
+    <div class="account-card card stack" id="view-account" hidden>
+      <div>
+        <span class="eyebrow">Signed in</span>
+        <h1 style="font-size:32px;margin-top:16px">You’re in.</h1>
+        <p class="sub" style="margin:8px 0 0;color:var(--muted)">Signed in as <strong id="who" style="color:var(--ink)"></strong>.</p>
+      </div>
+      <p style="margin:0;color:var(--muted)">Your saved plans and report library will live here. For now, you can look at the market reports we’re running.</p>
+      <div class="cta-row">
+        <a class="btn btn-accent" href="/reports/memphis/">Memphis report</a>
+        <a class="btn btn-ghost" href="/reports/cleveland/">Cleveland report</a>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/api.js"></script>
+<script src="/assets/js/account.js"></script>
+</body>
+</html>

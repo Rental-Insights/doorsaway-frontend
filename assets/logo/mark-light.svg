@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="DoorsAway">
+  <path d="M18 104 V54 a22 22 0 0 1 44 0 V104" fill="none" stroke="#F7F5F0" stroke-width="9" stroke-linejoin="round"/>
+  <line x1="10" y1="104" x2="70" y2="104" stroke="#F7F5F0" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="51" cy="78" r="4.5" fill="#F7F5F0"/>
+  <path d="M62 62 Q 92 62 99 32" fill="none" stroke="#E8693C" stroke-width="6" stroke-linecap="round" stroke-dasharray="1 11"/>
+  <circle cx="101" cy="22" r="10" fill="#E8693C"/>
+</svg>

@@ -53,6 +53,11 @@
     resetPassword: function (key, password) { return call('POST', '/auth/password/reset', { key: key, password: password }); },
     logout: function () { return call('DELETE', '/auth/session'); },
     pendingFlow: pendingFlow,
+    // Paid reports tied to this account (matched on its verified email addresses).
+    myOrders: function () {
+      return fetch(C.apiBase + '/api/me/orders/', { credentials: 'include', headers: { Accept: 'application/json' } })
+        .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return { status: res.status, orders: j.orders || [] }; }); });
+    },
 
     // Google sign-in: a top-level form POST (the API answers with a redirect to Google, and Google
     // sends the browser back through the API to `next` on this site).

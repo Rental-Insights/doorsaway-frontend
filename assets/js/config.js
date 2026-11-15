@@ -14,7 +14,7 @@ window.DOORSAWAY = (function () {
 
     // ---- Paid-report experiment (Memphis / Cleveland) ----
     metaPixelId: '',   // e.g. '123456789012345'
-    ga4Id: '',         // e.g. 'G-XXXXXXX'
+    ga4Id: 'G-EGYGPWHSXY',
     deliveryBusinessDays: 5,
     foundingLimit: 50, // "founding price for the first N pre-orders"; 0 hides the line
     prices: [49, 149], // the two A/B price arms (the backend only accepts these)

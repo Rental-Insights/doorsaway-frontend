@@ -59,6 +59,13 @@
         .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return { status: res.status, orders: j.orders || [] }; }); });
     },
 
+    // Market dashboard (signed-in only): resolves { status, data }; 401 means "not signed in".
+    markets: function (state, city) {
+      var path = state ? '/api/markets/' + encodeURIComponent(state) + '/' + encodeURIComponent(city) + '/' : '/api/markets/';
+      return fetch(C.apiBase + path, { credentials: 'include', headers: { Accept: 'application/json' } })
+        .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return { status: res.status, data: j }; }); });
+    },
+
     // Google sign-in: a top-level form POST (the API answers with a redirect to Google, and Google
     // sends the browser back through the API to `next` on this site).
     googleSignIn: function (nextPath) {

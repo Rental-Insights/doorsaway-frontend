@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Market dashboard — DoorsAway</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14213D">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/logo/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  .dash-controls { display: grid; gap: 18px; }
+  .row { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: end; }
+  .field { display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: var(--muted); }
+  .field select, .field input { font: inherit; font-weight: 500; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-sm); padding: 9px 12px; min-height: 44px; }
+  .field input { width: 92px; }
+  .chip { font: inherit; font-weight: 600; font-size: 14px; padding: 9px 14px; min-height: 44px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+  table.dash { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 900px; }
+  table.dash th, table.dash td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--line-soft); white-space: nowrap; }
+  table.dash th:first-child, table.dash td:first-child, table.dash th:nth-child(2), table.dash td:nth-child(2) { text-align: left; }
+  table.dash th { position: sticky; top: 0; background: var(--surface); font-size: 12px; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
+  table.dash th button { all: unset; cursor: pointer; font: inherit; text-transform: inherit; letter-spacing: inherit; }
+  table.dash th button:focus-visible { outline: 3px solid var(--accent); }
+  .pos { color: var(--ok); font-weight: 600; } .neg { color: var(--danger); font-weight: 600; }
+  .flag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-text); margin-left: 4px; }
+  .compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .compare dl { margin: 10px 0 0; display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; font-size: 14px; }
+  .compare dt { color: var(--muted); } .compare dd { margin: 0; font-weight: 600; text-align: right; }
+  .fine { font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site-header">
+    <a class="logo" href="../"><img src="../assets/logo/mark.svg" alt="" width="34" height="34">doors<b>away</b></a>
+    <nav class="nav" aria-label="Main">
+      <a href="../account/">Account</a>
+      <button type="button" class="btn btn-ghost btn-small" id="logout-btn" hidden>Sign out</button>
+    </nav>
+  </header>
+  <main id="main" style="padding:40px 0 96px; display:grid; gap:24px">
+    <div class="card" id="view-loading" aria-live="polite"><p class="sub" style="margin:0">Loading the dashboard…</p></div>
+
+    <div id="view-dash" hidden style="display:grid; gap:24px">
+      <div>
+        <span class="eyebrow">Market dashboard</span>
+        <h1 style="font-size:clamp(28px,4vw,40px);margin-top:14px">Pick the right ZIP and property type.</h1>
+        <p class="sub" style="margin:10px 0 0;color:var(--muted);max-width:720px">Compare ZIP codes by property type: typical value and rent, gross yield, how fast the market is moving, and what a deal might cash-flow after your own financing assumptions.</p>
+      </div>
+
+      <section class="card dash-controls" aria-label="Filters and assumptions">
+        <div class="row">
+          <label class="field">Market <select id="market"></select></label>
+          <div class="field" role="group" aria-label="Property types">Property type
+            <div class="row" id="types" style="gap:8px"></div>
+          </div>
+        </div>
+        <details>
+          <summary style="cursor:pointer;font-weight:600">Cash-flow assumptions</summary>
+          <div class="row" style="margin-top:14px">
+            <label class="field">Down payment % <input id="a-down" type="number" min="0" max="100" step="1" value="25"></label>
+            <label class="field">Interest rate % <input id="a-rate" type="number" min="0" max="20" step="0.125" value="7"></label>
+            <label class="field">Loan years <input id="a-years" type="number" min="5" max="40" step="5" value="30"></label>
+            <label class="field">Property tax % of value <input id="a-tax" type="number" min="0" max="5" step="0.05" value="1.4"></label>
+            <label class="field">Insurance % of value <input id="a-ins" type="number" min="0" max="3" step="0.05" value="0.5"></label>
+            <label class="field">Vacancy % of rent <input id="a-vac" type="number" min="0" max="50" step="1" value="8"></label>
+            <label class="field">Management % of rent <input id="a-mgmt" type="number" min="0" max="30" step="1" value="8"></label>
+            <label class="field">Repairs % of rent <input id="a-rep" type="number" min="0" max="30" step="1" value="8"></label>
+          </div>
+          <p class="fine" style="margin:12px 0 0">Defaults are placeholders. Replace them with your real rate, the tax rate for the specific house, and an insurance quote.</p>
+        </details>
+      </section>
+
+      <p class="msg err" id="err" hidden></p>
+      <p class="fine" id="status" aria-live="polite"></p>
+
+      <div class="tablewrap"><table class="dash" id="tbl">
+        <caption class="sr-only">ZIP codes by property type</caption>
+        <thead><tr id="thead"></tr></thead><tbody id="tbody"></tbody>
+      </table></div>
+
+      <section id="compare-wrap" hidden>
+        <h2 style="font-size:22px;margin-bottom:14px">Side by side</h2>
+        <div class="compare" id="compare"></div>
+      </section>
+
+      <p class="fine" style="max-width:820px">Values and rents are model estimates built from public listing data, not appraisals, leases or advice. High gross yields often sit in neighborhoods where estimates are least reliable and where vacancy, repairs and unpaid rent cost more than the assumptions above. This data has no crime, tax-delinquency or condition information, so look at the neighborhood before buying. “Thin data” means few homes or recent sales back the row. Multi-family combines duplexes through four-unit buildings, so check the unit count of any specific property.</p>
+    </div>
+  </main>
+</div>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/api.js"></script>
+<script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

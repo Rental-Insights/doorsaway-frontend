@@ -40,7 +40,7 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.03em; line-hei
 
 /* ---------- logo ---------- */
 .logo { display: inline-flex; align-items: center; text-decoration: none; color: var(--ink); font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: -0.03em; line-height: 1; }
-.logo img { width: 34px; height: 34px; display: block; margin-right: 5px; }
+.logo img { width: 34px; height: 34px; display: block; margin-right: 0; }
 .logo b { font-weight: 700; color: var(--accent); }
 .logo.on-dark { color: var(--bg); }
 

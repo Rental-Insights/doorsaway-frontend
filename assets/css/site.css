@@ -194,8 +194,12 @@ form.inline select { width: auto; }
 .account-card { max-width: 520px; margin: 0 auto; }
 
 @media (max-width: 860px) {
-  .hero, .grid3, .grid2, .price-card { grid-template-columns: 1fr; }
-  ul.checks { grid-template-columns: 1fr; }
+  /* minmax(0, 1fr), not 1fr: a bare 1fr can't shrink below its content, so a wide table pushed the page past the screen */
+  .hero, .grid3, .grid2, .price-card { grid-template-columns: minmax(0, 1fr); }
+  ul.checks { grid-template-columns: minmax(0, 1fr); }
+  .preview { padding: 20px 16px; overflow-x: auto; }
+  .preview table { font-size: 13px; }
+  .preview th, .preview td { padding: 8px 4px; }
   .hero { padding-top: 16px; padding-bottom: 48px; gap: 28px; }
   section.block { padding: 52px 0; }
   .dark-card { padding: 28px 22px; }
@@ -205,6 +209,12 @@ form.inline select { width: auto; }
   .auth-main { align-items: flex-start; flex-direction: column; gap: 32px; padding-top: 28px; }
   .sticky-buy { display: flex; }
   .site-header .nav .hide-sm { display: none; }
+  /* keep the logo and the sign-in buttons on one row */
+  .site-header { gap: 8px 12px; }
+  .site-header .nav { flex-wrap: nowrap; }
+  .nav a { padding: 10px 8px; }
+  .nav a.btn { padding: 10px 14px; margin-left: 2px; }
+  .tag { white-space: nowrap; }
   body.has-sticky { padding-bottom: 76px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }

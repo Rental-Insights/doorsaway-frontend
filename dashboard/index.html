@@ -31,14 +31,16 @@ button,input,select{font:inherit;color:inherit}
 .wrap{max-width:1280px;margin:0 auto;padding:0 20px}
 
 /* header */
-.top{background:var(--navy);color:#fff}
+.top{background:var(--cream);color:var(--navy);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding-top:14px;padding-bottom:14px}
-.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:Sora,sans-serif;font-weight:700;font-size:19px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--navy);text-decoration:none;font-family:Sora,sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.03em;line-height:1}
+.brand b{font-weight:700;color:var(--orange)}
+.brand img{margin-right:0}
 .brand-mark{width:30px;height:30px;border-radius:8px;background:var(--orange);display:grid;place-items:center}
 .top .spacer{flex:1}
-.top label{font-size:13px;color:#C9CEDA}
-.top select{background:var(--navy-2);border:1px solid #3A4A70;color:#fff;border-radius:10px;padding:9px 12px;min-height:42px}
-.est-pill{font-size:12px;font-weight:600;color:var(--orange);border:1px solid #3A4A70;border-radius:999px;padding:4px 10px}
+.top label{font-size:13px;color:#4A5468}
+.top select{background:#fff;border:1.5px solid var(--line);color:var(--navy);border-radius:10px;padding:9px 12px;min-height:42px}
+.est-pill{font-size:12px;font-weight:600;color:#B8431C;background:#FCE9E0;border-radius:999px;padding:4px 10px}
 
 /* control bar */
 .controls{position:sticky;top:0;z-index:20;background:rgba(247,245,240,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
@@ -199,7 +201,7 @@ td.num,th.num{text-align:right}
 <a class="sr" href="#main">Skip to dashboard</a>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="../" aria-label="DoorsAway home"><img src="../assets/logo/mark.svg" alt="" width="30" height="30" style="display:block">doors<b>away</b></a>
+    <a class="brand" href="../" aria-label="DoorsAway home"><img src="../assets/logo/mark.svg" alt="" width="34" height="34" style="display:block">doors<b>away</b></a>
     <span class="est-pill">All values are estimates</span>
     <span class="spacer"></span>
     <label for="market">Market</label>

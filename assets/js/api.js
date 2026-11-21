@@ -73,7 +73,7 @@
         var f = document.createElement('form');
         f.method = 'POST';
         f.action = AUTH + '/auth/provider/redirect';
-        [['provider', 'google'], ['process', 'login'], ['callback_url', location.origin + (nextPath || (C.base + '/dashboard/'))],
+        [['provider', 'google'], ['process', 'login'], ['callback_url', (nextPath ? location.origin + nextPath : C.appUrl)],
          ['csrfmiddlewaretoken', token]].forEach(function (kv) {
           var i = document.createElement('input'); i.type = 'hidden'; i.name = kv[0]; i.value = kv[1]; f.appendChild(i);
         });

@@ -10,6 +10,9 @@ window.DOORSAWAY = (function () {
     // session cookie is same-site, e.g. site doorsaway.example, API api.doorsaway.example.
     apiBase: isLocal ? 'http://localhost:8000' : 'https://app.doorsaway.com',
 
+    // Where people land after signing in (the API host serves the market dashboard at its root).
+    appUrl: isLocal ? 'http://localhost:8000/' : 'https://app.doorsaway.com/',
+
     contactEmail: 'hello@doorsaway.com', // shown in footers, legal pages and error messages
 
     // ---- Paid-report experiment (Memphis / Cleveland) ----

@@ -53,7 +53,7 @@
       A.resetPassword(key, pw).then(function (r) {
         busy(btn, false, 'Update password');
         // 200 (signed in) and 401 (password changed, sign in again) are both success.
-        if (r.status === 200 && r.meta.is_authenticated) return location.assign(window.DOORSAWAY.base + '/dashboard/');
+        if (r.status === 200 && r.meta.is_authenticated) return location.assign(window.DOORSAWAY.appUrl);
         if (r.status === 401) return location.assign(window.DOORSAWAY.base + '/login/?reset=1');
         if (r.status === 429) return msg('form-err', THROTTLED);
         var keyErr = r.errors.filter(function (x) { return x.param === 'key'; })[0];

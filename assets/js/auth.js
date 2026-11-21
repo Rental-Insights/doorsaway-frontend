@@ -10,8 +10,8 @@
 
   // Only same-site relative paths: never send someone to a URL taken from the query string.
   var next = (function () {
-    var n = q.get('next') || (window.DOORSAWAY.base + '/dashboard/');
-    return /^\/(?!\/)/.test(n) ? n : window.DOORSAWAY.base + '/dashboard/';
+    var n = q.get('next');
+    return n && /^\/(?!\/)/.test(n) ? n : window.DOORSAWAY.appUrl;
   })();
 
   var NETWORK = 'We can’t reach DoorsAway right now. Check your connection and try again.';

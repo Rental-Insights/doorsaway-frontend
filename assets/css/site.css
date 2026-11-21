@@ -91,7 +91,7 @@ section.block { padding: 80px 0; }
 section.block > .wrap > h2, .section-title { font-size: clamp(28px, 3.6vw, 40px); max-width: 720px; margin-bottom: 32px; }
 
 /* ---------- hero ---------- */
-.hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; padding: 48px 0 80px; }
+.hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; padding-top: 48px; padding-bottom: 80px; } /* longhand on purpose: the shorthand would wipe .wrap's side gutter */
 .hero h1 { font-size: clamp(36px, 5vw, 58px); margin: 20px 0; line-height: 1.04; }
 .hero .lede { margin-bottom: 28px; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
@@ -196,7 +196,7 @@ form.inline select { width: auto; }
 @media (max-width: 860px) {
   .hero, .grid3, .grid2, .price-card { grid-template-columns: 1fr; }
   ul.checks { grid-template-columns: 1fr; }
-  .hero { padding: 16px 0 48px; gap: 28px; }
+  .hero { padding-top: 16px; padding-bottom: 48px; gap: 28px; }
   section.block { padding: 52px 0; }
   .dark-card { padding: 28px 22px; }
   .facts { padding: 32px 24px; }

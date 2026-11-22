@@ -69,11 +69,14 @@
     // Google sign-in: a top-level form POST (the API answers with a redirect to Google, and Google
     // sends the browser back through the API to `next` on this site).
     googleSignIn: function (nextPath) {
+      // `nextPath` is either a site path ("/account/") or a full address (the app's home); a full address must not
+      // get this site's origin glued in front of it.
+      function callbackUrl(n) { return !n ? C.appUrl : /^https?:\/\//.test(n) ? n : location.origin + n; }
       return getCsrf(true).then(function (token) {
         var f = document.createElement('form');
         f.method = 'POST';
         f.action = AUTH + '/auth/provider/redirect';
-        [['provider', 'google'], ['process', 'login'], ['callback_url', (nextPath ? location.origin + nextPath : C.appUrl)],
+        [['provider', 'google'], ['process', 'login'], ['callback_url', callbackUrl(nextPath)],
          ['csrfmiddlewaretoken', token]].forEach(function (kv) {
           var i = document.createElement('input'); i.type = 'hidden'; i.name = kv[0]; i.value = kv[1]; f.appendChild(i);
         });
